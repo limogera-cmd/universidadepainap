@@ -100,6 +100,22 @@ export default function Dashboard() {
               </div>
             </div>
           </div>
+
+          {/* Novos Cursos Adicionados */}
+          {[1, 2, 3, 4, 5].map((num) => (
+            <div key={`novo-curso-${num}`} className="case-card glass-panel" onClick={() => navigate('/aluno/curso')} style={{ cursor: 'pointer' }}>
+              <div className="card-image-placeholder" style={{ backgroundImage: `url(/img/curso_novo_${num}.png)`, backgroundSize: 'cover', backgroundPosition: 'center' }}></div>
+              <div className="card-content">
+                <span className="card-category">Novo Curso</span>
+                <h4>Curso Especialização {num}</h4>
+                <p>Módulo avançado de Arquitetura de Consumo.</p>
+                <div className="progress-container">
+                  <div className="progress-bar" style={{ width: '0%' }}></div>
+                </div>
+              </div>
+            </div>
+          ))}
+
         </div>
       </section>
     </div>

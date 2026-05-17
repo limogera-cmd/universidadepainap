@@ -7,6 +7,7 @@ import StudentLayout from './layouts/StudentLayout';
 import AdminLayout from './layouts/AdminLayout';
 
 // Pages
+import Landing from './pages/Landing';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import CoursePlayer from './pages/CoursePlayer';
@@ -27,7 +28,7 @@ const PrivateRoute = ({ children, allowedRole }) => {
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<Navigate to="/login" replace />} />
+      <Route path="/" element={<Landing />} />
       <Route path="/login" element={<Login />} />
 
       {/* Rota Privada - Área do Aluno */}

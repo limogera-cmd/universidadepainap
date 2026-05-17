@@ -13,7 +13,7 @@ export default function Login() {
     e.preventDefault();
     const success = login(email, password);
     if (!success) {
-      setError('Acesso negado. Credenciais incompatíveis com nossos registros restritos. (Use admin@painap.com / admin)');
+      setError('E-mail ou senha incorretos. Verifique seus dados e tente novamente.');
     }
   };
 

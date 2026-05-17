@@ -18,6 +18,7 @@ import ManageStudents from './pages/admin/ManageStudents';
 import AdminSettings from './pages/admin/AdminSettings';
 import Toolbox from './pages/Toolbox';
 import Community from './pages/Community';
+import Policies from './pages/Policies';
 
 // Route Guards
 const PrivateRoute = ({ children, allowedRole }) => {
@@ -32,6 +33,7 @@ function App() {
     <Routes>
       <Route path="/" element={<Landing />} />
       <Route path="/login" element={<Login />} />
+      <Route path="/politicas" element={<Policies />} />
 
       {/* Rota Privada - Área do Aluno */}
       <Route path="/aluno" element={

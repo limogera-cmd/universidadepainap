@@ -192,9 +192,9 @@ export default function Landing() {
         <div className="footer-col">
           <h4>Políticas</h4>
           <ul>
-            <li>Termos de Uso</li>
-            <li>Privacidade</li>
-            <li>Suporte ao Aluno</li>
+            <li onClick={() => navigate('/politicas?tab=termos')} style={{ cursor: 'pointer' }}>Termos de Uso</li>
+            <li onClick={() => navigate('/politicas?tab=privacidade')} style={{ cursor: 'pointer' }}>Privacidade & LGPD</li>
+            <li onClick={() => navigate('/politicas?tab=suporte')} style={{ cursor: 'pointer' }}>Suporte ao Aluno</li>
           </ul>
         </div>
         <div className="footer-bottom">

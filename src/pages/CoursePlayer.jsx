@@ -192,7 +192,23 @@ export default function CoursePlayer() {
             </p>
             <div className="materials">
               <h4>Materiais Complementares</h4>
-              <button className="btn-secondary">Download PDF da Aula</button>
+              <a 
+                href="/docs/Material_Complementar_PAINAP.pdf" 
+                download="Material_Complementar_PAINAP.pdf"
+                className="btn-secondary" 
+                style={{ 
+                  display: 'inline-flex', 
+                  alignItems: 'center', 
+                  justifyContent: 'center', 
+                  textDecoration: 'none', 
+                  gap: '0.5rem', 
+                  padding: '0.75rem 1.25rem',
+                  borderRadius: '8px',
+                  width: 'fit-content' 
+                }}
+              >
+                Download PDF da Aula
+              </a>
             </div>
           </div>
 

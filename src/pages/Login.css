@@ -1,0 +1,129 @@
+.login-container {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.login-container::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image: radial-gradient(circle at top right, rgba(212, 175, 55, 0.15) 0%, transparent 40%),
+                    radial-gradient(circle at bottom left, rgba(212, 175, 55, 0.05) 0%, transparent 40%);
+  pointer-events: none;
+}
+
+.login-box {
+  padding: 4rem 3rem;
+  width: 100%;
+  max-width: 440px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  z-index: 10;
+  border-color: rgba(212, 175, 55, 0.2);
+}
+
+.login-header h2 {
+  font-size: 2.5rem;
+  margin-bottom: 0;
+  letter-spacing: 2px;
+  color: var(--text-primary);
+}
+
+.login-header .subtitle {
+  letter-spacing: 8px;
+  color: var(--accent);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  display: block;
+  margin-top: 0.25rem;
+}
+
+.login-desc {
+  margin: 2.5rem 0 1.5rem;
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  width: 100%;
+}
+
+.input-group {
+  width: 100%;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 1.2rem;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  font-size: 1rem;
+  font-family: inherit;
+  transition: all 0.3s ease;
+}
+
+.input-group input:focus {
+  outline: none;
+  border-color: var(--accent);
+  background: rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.1);
+}
+
+.btn-login-submit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1.2rem;
+  border-radius: 8px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+  border: none;
+  background: var(--accent);
+  color: #000;
+  margin-top: 0.5rem;
+}
+
+.btn-login-submit:hover {
+  background: var(--accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.25);
+}
+
+.error-message {
+  color: #ff4d4d;
+  background: rgba(255, 77, 77, 0.1);
+  padding: 0.8rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+}
+
+.login-footer {
+  margin-top: 2rem;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  border-top: 1px solid var(--border-color);
+  padding-top: 1rem;
+  width: 100%;
+}
+
+.login-footer p {
+  margin-bottom: 0.5rem;
+}

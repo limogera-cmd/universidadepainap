@@ -45,9 +45,9 @@
 /* Hero Section */
 .landing-hero {
   min-height: 100vh;
-  background-image: linear-gradient(to right, rgba(18, 18, 18, 0.9) 0%, rgba(18, 18, 18, 0.4) 100%), url('/img/thumb_1.png');
+  background-image: linear-gradient(to right, rgba(18, 18, 18, 0.92) 0%, rgba(18, 18, 18, 0.5) 60%, rgba(18, 18, 18, 0.15) 100%), url('/img/BANNER OFICIAL.png');
   background-size: cover;
-  background-position: center;
+  background-position: center top;
   background-attachment: fixed;
   display: flex;
   align-items: center;
@@ -71,7 +71,9 @@
 .hero-content p {
   font-size: 1.2rem;
   color: var(--text-secondary);
-  margin-bottom: 2rem;
+  margin-bottom: 3.5rem;
+  line-height: 1.7;
+  max-width: 520px;
 }
 
 .hero-cta {

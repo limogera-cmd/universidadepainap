@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { PlayCircle, CheckCircle, Circle, Lock, Maximize, ArrowRight, Star, Award } from 'lucide-react';
+import { Play, CheckCircle, Circle, Lock, Maximize, ArrowRight, Star, Award } from 'lucide-react';
 import './CoursePlayer.css';
 
 export default function CoursePlayer() {
@@ -33,19 +33,21 @@ export default function CoursePlayer() {
       <div className="main-player-section">
         <div className="video-wrapper glass-panel">
           {!isPlaying ? (
-            <div className="custom-video-cover" onClick={() => setIsPlaying(true)}>
-              {/* Premium Background Pattern or Image could go here */}
+            <div 
+              className="custom-video-cover" 
+              onClick={() => setIsPlaying(true)}
+              style={{ backgroundImage: 'linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.85)), url(/img/thumb_course_psicologia_1779051643188.png)' }}
+            >
               <div className="cover-content">
                 <div className="play-button-glass">
-                  <PlayCircle size={64} className="play-icon" />
+                  <Play size={36} fill="currentColor" className="play-icon" style={{ marginLeft: '4px' }} />
                 </div>
-                <h3>A Psicologia do Espaço</h3>
-                <p>Módulo 1 • Aula 2</p>
+                <h3 style={{ fontFamily: 'Mosvita, serif', fontSize: '2rem', letterSpacing: '1px' }}>A Psicologia do Espaço</h3>
+                <p style={{ color: 'var(--accent)', letterSpacing: '2px', textTransform: 'uppercase', fontSize: '0.85rem', fontWeight: 600 }}>Módulo 1 • Aula 2</p>
               </div>
             </div>
           ) : (
             <div className="iframe-container">
-              {/* YouTube Embed: Autoplay enabled since user initiated it */}
               <iframe 
                 src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&rel=0&modestbranding=1" 
                 title="Course Video" 
@@ -59,30 +61,32 @@ export default function CoursePlayer() {
 
         <div className="lesson-details">
           <div className="lesson-header">
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', width: '100%' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%', flexWrap: 'wrap', gap: '1rem' }}>
               <div>
-                <h1>A Psicologia do Espaço</h1>
-                <p className="lesson-meta">Módulo 1 • 18 Minutos • Nível Intermediário</p>
+                <h1 style={{ fontFamily: 'Mosvita, serif', fontSize: '2.2rem', margin: 0, fontWeight: 'normal' }}>A Psicologia do Espaço</h1>
+                <p className="lesson-meta" style={{ color: 'var(--accent)', fontSize: '0.85rem', letterSpacing: '1px', textTransform: 'uppercase', marginTop: '0.4rem' }}>
+                  Módulo 1 • 18 Minutos • Nível Intermediário
+                </p>
               </div>
-              <button 
-                onClick={() => setIsFocusMode(!isFocusMode)}
-                className="btn-secondary" 
-                style={{ padding: '0.5rem 1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}
-              >
-                <Maximize size={18} /> {isFocusMode ? 'Sair do Modo Foco' : 'Modo Foco'}
-              </button>
-            </div>
-            <div style={{ display: 'flex', gap: '1rem', marginTop: '1rem' }}>
-              <button className="btn-primary">
-                <CheckCircle size={18} /> Marcar como Concluída
-              </button>
-              <button 
-                onClick={() => setIsFavorited(!isFavorited)}
-                className="btn-secondary" 
-                style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: isFavorited ? 'var(--accent)' : 'var(--text-primary)' }}
-              >
-                <Star size={18} fill={isFavorited ? 'var(--accent)' : 'none'} /> {isFavorited ? 'Salva nos Favoritos' : 'Salvar nos Favoritos'}
-              </button>
+              <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'center', flexWrap: 'wrap' }}>
+                <button className="btn-primary" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', padding: '0.75rem 1.25rem', borderRadius: '8px' }}>
+                  <CheckCircle size={18} /> Marcar como Concluída
+                </button>
+                <button 
+                  onClick={() => setIsFavorited(!isFavorited)}
+                  className="btn-secondary" 
+                  style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', padding: '0.75rem 1.25rem', borderRadius: '8px', color: isFavorited ? 'var(--accent)' : 'var(--text-primary)' }}
+                >
+                  <Star size={18} fill={isFavorited ? 'var(--accent)' : 'none'} /> {isFavorited ? 'Salva nos Favoritos' : 'Salvar nos Favoritos'}
+                </button>
+                <button 
+                  onClick={() => setIsFocusMode(!isFocusMode)}
+                  className="btn-secondary" 
+                  style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', padding: '0.75rem 1.25rem', borderRadius: '8px' }}
+                >
+                  <Maximize size={18} /> {isFocusMode ? 'Sair do Modo Foco' : 'Modo Foco'}
+                </button>
+              </div>
             </div>
           </div>
           

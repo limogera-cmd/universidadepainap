@@ -1,10 +1,35 @@
 import React from 'react';
-import { MessageSquare, ThumbsUp, Share2 } from 'lucide-react';
+import { MessageSquare, ThumbsUp, Share2, Award } from 'lucide-react';
 
 export default function Community() {
   const posts = [
-    { author: "Maria Silva", role: "Arquiteta Varejo", content: "Alguém tem indicação de fornecedor de ACM dourado escovado em SP?", likes: 12, comments: 4 },
-    { author: "Carlos Eduardo", role: "Design de Franquias", content: "Apliquei os conceitos do módulo 2 no projeto da clínica e o cliente aprovou de primeira! Reduzimos as luzes brancas na recepção.", likes: 34, comments: 8 }
+    { 
+      author: "Maria Silva", 
+      role: "Arquiteta Varejo", 
+      badge: "Arquiteta de Elite",
+      badgeColor: "linear-gradient(135deg, #d4af37, #b38b22)",
+      content: "Alguém tem indicação de fornecedor de ACM dourado escovado em SP? Preciso para uma fachada de franquia de alto luxo.", 
+      likes: 12, 
+      comments: 4 
+    },
+    { 
+      author: "Carlos Eduardo", 
+      role: "Design de Franquias", 
+      badge: "Referência",
+      badgeColor: "#1e1a0a",
+      content: "Apliquei os conceitos do módulo 2 no projeto da clínica e o cliente aprovou de primeira! Reduzimos as luzes brancas na recepção.", 
+      likes: 34, 
+      comments: 8 
+    },
+    {
+      author: "Carina Souza",
+      role: "Fundadora PAINAP",
+      badge: "Sócio PAINAP",
+      badgeColor: "#ff4d4f",
+      content: "Parabéns Carlos! Esse é exatamente o efeito da Psicologia de Iluminação. Aumenta a ocitocina e gera uma recepção muito mais acolhedora.",
+      likes: 56,
+      comments: 11
+    }
   ];
 
   return (
@@ -25,7 +50,25 @@ export default function Community() {
                 {post.author.charAt(0)}
               </div>
               <div>
-                <h4 style={{ color: 'var(--text-primary)' }}>{post.author}</h4>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                  <h4 style={{ color: 'var(--text-primary)' }}>{post.author}</h4>
+                  
+                  {/* Badge de Hierarquia */}
+                  <span style={{ 
+                    background: post.badgeColor, 
+                    color: post.badgeColor.startsWith('#ff') ? 'white' : 'var(--accent)',
+                    fontSize: '0.7rem', 
+                    padding: '0.1rem 0.5rem', 
+                    borderRadius: '4px',
+                    fontWeight: 'bold',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '0.2rem',
+                    border: '1px solid var(--accent)'
+                  }}>
+                    <Award size={10} /> {post.badge}
+                  </span>
+                </div>
                 <span style={{ fontSize: '0.8rem', color: 'var(--text-secondary)' }}>{post.role}</span>
               </div>
             </div>

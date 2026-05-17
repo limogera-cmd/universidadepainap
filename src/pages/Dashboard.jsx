@@ -1,5 +1,5 @@
 import React from 'react';
-import { PlayCircle, Clock, Award, ArrowRight, Lock } from 'lucide-react';
+import { PlayCircle, Clock, Award, ArrowRight, Lock, CheckCircle, Circle } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import './Dashboard.css';
 
@@ -58,12 +58,86 @@ export default function Dashboard() {
         </div>
       </section>
 
+      {/* Trilha de Aprendizado Visual */}
+      <section className="featured-section" style={{ marginBottom: '4rem' }}>
+        <div className="section-header">
+          <h3>Trilha do Sucesso Comercial</h3>
+          <span style={{ color: 'var(--accent)', fontSize: '0.9rem' }}>Sua jornada passo a passo</span>
+        </div>
+        
+        <div className="roadmap-container">
+          
+          <div className="roadmap-step completed">
+            <div className="step-marker">✓</div>
+            <div className="roadmap-card" onClick={() => navigate('/aluno/curso')}>
+              <div className="roadmap-image" style={{ backgroundImage: 'url(/img/curso_novo_1.png)' }}></div>
+              <div className="roadmap-content">
+                <span style={{ color: 'var(--accent)', fontSize: '0.8rem', fontWeight: 'bold', textTransform: 'uppercase' }}>Fase 1 • Concluído</span>
+                <h4 style={{ fontSize: '1.2rem', margin: '0.5rem 0' }}>Arquitetura que Vende</h4>
+                <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>Os segredos e bases estratégicas para transformar fachadas e pontos comerciais em máquinas de atração.</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="roadmap-step active">
+            <div className="step-marker">2</div>
+            <div className="roadmap-card" onClick={() => navigate('/aluno/curso')}>
+              <div className="roadmap-image" style={{ backgroundImage: 'url(/img/curso_novo_2.png)' }}></div>
+              <div className="roadmap-content">
+                <span style={{ color: 'var(--accent)', fontSize: '0.8rem', fontWeight: 'bold', textTransform: 'uppercase' }}>Fase 2 • Em Andamento</span>
+                <h4 style={{ fontSize: '1.2rem', margin: '0.5rem 0' }}>Estética que Fatura</h4>
+                <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>Harmonização visual de alto padrão, escolha de paleta de cores corporativa e acabamentos premium.</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="roadmap-step">
+            <div className="step-marker">3</div>
+            <div className="roadmap-card" onClick={() => navigate('/aluno/curso')}>
+              <div className="roadmap-image" style={{ backgroundImage: 'url(/img/curso_novo_3.png)' }}></div>
+              <div className="roadmap-content">
+                <span style={{ color: 'var(--text-secondary)', fontSize: '0.8rem', fontWeight: 'bold', textTransform: 'uppercase' }}>Fase 3 • Bloqueado</span>
+                <h4 style={{ fontSize: '1.2rem', margin: '0.5rem 0' }}>A Loja como Experiência</h4>
+                <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>Criação de jornadas sensoriais, fluxos intuitivos e estímulos de consumo dentro da loja física.</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="roadmap-step">
+            <div className="step-marker">4</div>
+            <div className="roadmap-card" onClick={() => navigate('/aluno/curso')}>
+              <div className="roadmap-image" style={{ backgroundImage: 'url(/img/curso_novo_4.png)' }}></div>
+              <div className="roadmap-content">
+                <span style={{ color: 'var(--text-secondary)', fontSize: '0.8rem', fontWeight: 'bold', textTransform: 'uppercase' }}>Fase 4 • Bloqueado</span>
+                <h4 style={{ fontSize: '1.2rem', margin: '0.5rem 0' }}>O Luxo do Varejo</h4>
+                <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>Estratégias de diferenciação de marca e layout aplicadas ao mercado de altíssimo padrão.</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="roadmap-step">
+            <div className="step-marker">5</div>
+            <div className="roadmap-card" onClick={() => navigate('/aluno/curso')}>
+              <div className="roadmap-image" style={{ backgroundImage: 'url(/img/curso_novo_5.png)' }}></div>
+              <div className="roadmap-content">
+                <span style={{ color: 'var(--text-secondary)', fontSize: '0.8rem', fontWeight: 'bold', textTransform: 'uppercase' }}>Fase 5 • Bloqueado</span>
+                <h4 style={{ fontSize: '1.2rem', margin: '0.5rem 0' }}>Arquitetura de Posicionamento</h4>
+                <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>Como se consolidar como referência no mercado e atrair contratos corporativos de cinco dígitos.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      {/* Cases & Mentoria */}
       <section className="featured-section">
         <div className="section-header">
-          <h3>Novos Cases & Templates</h3>
+          <h3>Cases de Sucesso & Mentoria</h3>
           <button className="btn-text" onClick={() => navigate('/aluno/cases')}>Ver todos</button>
         </div>
         <div className="cards-grid">
+          
           <div className="case-card glass-panel" style={{ opacity: 0.7, position: 'relative' }}>
             <div style={{ position: 'absolute', top: '1rem', right: '1rem', background: 'var(--bg-primary)', padding: '0.5rem', borderRadius: '50%', zIndex: 10 }}>
               <Lock size={18} color="var(--accent)" />
@@ -76,7 +150,7 @@ export default function Dashboard() {
               <button className="btn-secondary" style={{ marginTop: '1rem', width: '100%', justifyContent: 'center' }}>Fazer Upgrade</button>
             </div>
           </div>
-          
+
           <div className="case-card glass-panel" onClick={() => navigate('/aluno/curso')} style={{ cursor: 'pointer' }}>
             <div className="card-image-placeholder" style={{ backgroundImage: 'url(/img/thumb_2.png)', backgroundSize: 'cover', backgroundPosition: 'center' }}></div>
             <div className="card-content">
@@ -100,21 +174,6 @@ export default function Dashboard() {
               </div>
             </div>
           </div>
-
-          {/* Novos Cursos Adicionados */}
-          {[1, 2, 3, 4, 5].map((num) => (
-            <div key={`novo-curso-${num}`} className="case-card glass-panel" onClick={() => navigate('/aluno/curso')} style={{ cursor: 'pointer' }}>
-              <div className="card-image-placeholder" style={{ backgroundImage: `url(/img/curso_novo_${num}.png)`, backgroundSize: 'cover', backgroundPosition: 'center' }}></div>
-              <div className="card-content">
-                <span className="card-category">Novo Curso</span>
-                <h4>Curso Especialização {num}</h4>
-                <p>Módulo avançado de Arquitetura de Consumo.</p>
-                <div className="progress-container">
-                  <div className="progress-bar" style={{ width: '0%' }}></div>
-                </div>
-              </div>
-            </div>
-          ))}
 
         </div>
       </section>

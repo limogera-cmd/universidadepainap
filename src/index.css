@@ -37,6 +37,19 @@
   --glass-border: rgba(255, 255, 255, 0.08);
 }
 
+.light-theme {
+  --bg-primary: #f5f5f5;
+  --bg-secondary: #ffffff;
+  --bg-tertiary: #e0e0e0;
+  --accent: #b38b22; /* Darker Gold for light theme */
+  --accent-hover: #d4af37;
+  --text-primary: #121212;
+  --text-secondary: #555555;
+  --border-color: rgba(0, 0, 0, 0.1);
+  --glass-bg: rgba(255, 255, 255, 0.8);
+  --glass-border: rgba(0, 0, 0, 0.05);
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -54,6 +67,7 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .app-container {

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { PlayCircle, CheckCircle, Circle, Lock, Maximize, ArrowRight } from 'lucide-react';
+import { PlayCircle, CheckCircle, Circle, Lock, Maximize, ArrowRight, Star, Award } from 'lucide-react';
 import './CoursePlayer.css';
 
 export default function CoursePlayer() {
@@ -7,6 +7,7 @@ export default function CoursePlayer() {
   const [activeModule, setActiveModule] = useState(1);
   const [activeLesson, setActiveLesson] = useState(2);
   const [isFocusMode, setIsFocusMode] = useState(false);
+  const [isFavorited, setIsFavorited] = useState(false);
 
   const courseData = [
     {
@@ -71,9 +72,18 @@ export default function CoursePlayer() {
                 <Maximize size={18} /> {isFocusMode ? 'Sair do Modo Foco' : 'Modo Foco'}
               </button>
             </div>
-            <button className="btn-primary">
-              <CheckCircle size={18} /> Marcar como Concluída
-            </button>
+            <div style={{ display: 'flex', gap: '1rem', marginTop: '1rem' }}>
+              <button className="btn-primary">
+                <CheckCircle size={18} /> Marcar como Concluída
+              </button>
+              <button 
+                onClick={() => setIsFavorited(!isFavorited)}
+                className="btn-secondary" 
+                style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: isFavorited ? 'var(--accent)' : 'var(--text-primary)' }}
+              >
+                <Star size={18} fill={isFavorited ? 'var(--accent)' : 'none'} /> {isFavorited ? 'Salva nos Favoritos' : 'Salvar nos Favoritos'}
+              </button>
+            </div>
           </div>
           
           <div className="lesson-description glass-panel">
@@ -151,6 +161,23 @@ export default function CoursePlayer() {
             </div>
           ))}
         </div>
+
+        {/* Certificado Premium Widget */}
+        <div style={{ 
+          marginTop: '2rem', padding: '1.5rem', 
+          background: 'linear-gradient(135deg, rgba(30,25,10,0.4), rgba(18,18,18,0.8))', 
+          border: '1px dashed var(--accent)', borderRadius: '8px',
+          textAlign: 'center'
+        }}>
+          <Award size={32} color="var(--accent)" style={{ margin: '0 auto 0.5rem auto' }} />
+          <h4 style={{ fontSize: '1rem', marginBottom: '0.25rem' }}>Certificado Oficial PAINAP</h4>
+          <span style={{ fontSize: '0.75rem', color: 'var(--text-secondary)' }}>Status: 25% Concluído</span>
+          <div className="progress-bar" style={{ marginTop: '0.5rem', height: '6px' }}>
+            <div className="progress-fill" style={{ width: '25%' }}></div>
+          </div>
+          <p style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', marginTop: '0.5rem' }}>Conclua todas as aulas para desbloquear seu selo Ouro corporativo.</p>
+        </div>
+
       </div>
     </div>
   );

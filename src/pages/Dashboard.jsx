@@ -6,6 +6,48 @@ import './Dashboard.css';
 export default function Dashboard() {
   const navigate = useNavigate();
 
+  // Load dynamic lessons from localStorage or use defaults
+  const [lessonsData] = React.useState(() => {
+    const saved = localStorage.getItem('painap_lessons');
+    if (saved) return JSON.parse(saved);
+    const defaults = [
+      { id: 1, module: 'Fundamentos da Arquitetura Comercial', title: 'Introdução ao Método PAINAP', duration: '15:20', completed: true, locked: false, description: 'Bases e fundamentos do método de arquitetura comercial que gera faturamento.' },
+      { id: 2, module: 'Fundamentos da Arquitetura Comercial', title: 'Zoneamento Comercial: O Primeiro Passo', duration: '22:45', completed: false, locked: false, description: 'Como planejar a planta baixa e o fluxo de circulação ideal.' },
+      { id: 3, module: 'Iluminação e Psicologia', title: 'Iluminação Cênica para Produtos de Luxo', duration: '18:10', completed: false, locked: false, description: 'Luz e sombra direcionados para destacar e valorizar produtos de alto ticket.' },
+      { id: 4, module: 'Estudos Avançados', title: 'Comunicação Visual e Fachadas Vendedoras', duration: '25:30', completed: false, locked: false, description: 'Estratégias de atração passiva de clientes através da fachada.' }
+    ];
+    return defaults;
+  });
+
+  const totalLessons = lessonsData.length;
+  const completedLessons = lessonsData.filter(l => l.completed).length;
+
+  const totalMinutes = lessonsData.reduce((acc, l) => {
+    if (l.completed) {
+      const parts = l.duration.split(':');
+      const mins = parseInt(parts[0]) || 15;
+      return acc + mins;
+    }
+    return acc;
+  }, 0) + (completedLessons > 0 ? 12 : 5);
+
+  const hrsStr = totalMinutes >= 60 
+    ? `${Math.floor(totalMinutes / 60)}h ${totalMinutes % 60}m` 
+    : `${totalMinutes}m`;
+
+  const getLevel = () => {
+    const percent = totalLessons > 0 ? (completedLessons / totalLessons) * 100 : 0;
+    if (percent >= 75) return { name: 'Ouro', color: 'var(--accent)' };
+    if (percent >= 25) return { name: 'Prata', color: '#c0c0c0' };
+    return { name: 'Bronze', color: '#cd7f32' };
+  };
+
+  const level = getLevel();
+  const completionPercent = totalLessons > 0 ? Math.round((completedLessons / totalLessons) * 100) : 0;
+
+  // Find the first incomplete lesson to continue watching
+  const nextLesson = lessonsData.find(l => !l.completed) || lessonsData[0];
+
   return (
     <div className="dashboard fade-in">
       <header className="hero-banner fade-in">
@@ -23,14 +65,14 @@ export default function Dashboard() {
             <div className="stat-card glass-panel">
               <Clock size={24} className="stat-icon" />
               <div className="stat-info">
-                <span className="stat-value">12h 45m</span>
+                <span className="stat-value">{hrsStr}</span>
                 <span className="stat-label">Tempo de Estudo</span>
               </div>
             </div>
-            <div className="stat-card glass-panel" style={{ border: '1px solid var(--accent)' }}>
-              <Award size={24} className="stat-icon" />
+            <div className="stat-card glass-panel" style={{ border: `1px solid ${level.color}` }}>
+              <Award size={24} className="stat-icon" style={{ color: level.color }} />
               <div className="stat-info">
-                <span className="stat-value" style={{ color: 'var(--accent)' }}>Ouro</span>
+                <span className="stat-value" style={{ color: level.color }}>{level.name}</span>
                 <span className="stat-label">Nível Atual</span>
               </div>
             </div>
@@ -39,19 +81,19 @@ export default function Dashboard() {
       </header>
 
       <section className="continue-watching glass-panel">
-        <div className="cw-image">
-          <div className="image-overlay">
+        <div className="cw-image" style={{ backgroundImage: 'url(/img/thumb_course_psicologia_1779051643188.png)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
+          <div className="image-overlay" onClick={() => navigate('/aluno/curso')} style={{ cursor: 'pointer' }}>
             <PlayCircle size={48} className="play-icon-large" />
           </div>
         </div>
         <div className="cw-content">
           <span className="cw-tag">CONTINUAR ASSISTINDO</span>
-          <h2>Módulo 3: Psicologia das Cores no Varejo</h2>
-          <p>Curso Completo de Arquitetura Comercial</p>
+          <h2>{nextLesson ? nextLesson.title : 'Todos os módulos concluídos!'}</h2>
+          <p>{nextLesson ? nextLesson.module : 'Parabéns pela dedicação!'}</p>
           <div className="progress-bar">
-            <div className="progress-fill" style={{ width: '65%' }}></div>
+            <div className="progress-fill" style={{ width: `${completionPercent}%` }}></div>
           </div>
-          <span className="progress-text">65% concluído</span>
+          <span className="progress-text">{completionPercent}% concluído</span>
           <button className="btn-primary" onClick={() => navigate('/aluno/curso')}>
             Continuar Aula <ArrowRight size={18} />
           </button>

@@ -147,7 +147,13 @@ export default function Dashboard() {
               <span className="card-category">Mentoria Premium</span>
               <h4>Sessão 1-on-1 com Especialista</h4>
               <p>Traga o seu projeto para uma análise crítica de layout e iluminação.</p>
-              <button className="btn-secondary" style={{ marginTop: '1rem', width: '100%', justifyContent: 'center' }}>Fazer Upgrade</button>
+              <button 
+                className="btn-secondary" 
+                style={{ marginTop: '1rem', width: '100%', justifyContent: 'center' }}
+                onClick={() => window.open('https://painap.vercel.app/', '_blank')}
+              >
+                Fazer Upgrade
+              </button>
             </div>
           </div>
 

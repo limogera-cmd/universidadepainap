@@ -184,9 +184,9 @@ export default function Landing() {
           <h4>Plataforma</h4>
           <ul>
             <li onClick={() => navigate('/login')} style={{ cursor: 'pointer' }}>Área do Aluno</li>
-            <li>Toolbox VIP</li>
-            <li>Comunidade</li>
-            <li>Mentoria 1-on-1</li>
+            <li onClick={() => navigate('/login')} style={{ cursor: 'pointer' }}>Toolbox VIP</li>
+            <li onClick={() => navigate('/login')} style={{ cursor: 'pointer' }}>Comunidade</li>
+            <li onClick={() => window.open('https://painap.vercel.app/', '_blank')} style={{ cursor: 'pointer' }}>Mentoria 1-on-1</li>
           </ul>
         </div>
         <div className="footer-col">

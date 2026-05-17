@@ -14,6 +14,8 @@ import CoursePlayer from './pages/CoursePlayer';
 import CaseLibrary from './pages/CaseLibrary';
 import AdminDashboard from './pages/admin/AdminDashboard';
 import ManageCourses from './pages/admin/ManageCourses';
+import ManageStudents from './pages/admin/ManageStudents';
+import AdminSettings from './pages/admin/AdminSettings';
 import Toolbox from './pages/Toolbox';
 import Community from './pages/Community';
 
@@ -54,6 +56,8 @@ function App() {
         <Route index element={<Navigate to="dashboard" replace />} />
         <Route path="dashboard" element={<AdminDashboard />} />
         <Route path="cursos" element={<ManageCourses />} />
+        <Route path="alunos" element={<ManageStudents />} />
+        <Route path="config" element={<AdminSettings />} />
       </Route>
     </Routes>
   );

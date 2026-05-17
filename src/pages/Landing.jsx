@@ -148,17 +148,45 @@ export default function Landing() {
 
       {/* Footer */}
       <footer className="landing-footer">
-        <div className="footer-col">
-          <h4>UNIVERSIDADE PAINAP</h4>
-          <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>Transformando o mercado de arquitetura comercial no Brasil.</p>
+        <div className="footer-col footer-brand">
+          <div style={{ fontFamily: 'Mosvita, serif', fontSize: '2rem', marginBottom: '0.75rem' }}>
+            PAINAP<span style={{ color: 'var(--accent)' }}>.</span>
+          </div>
+          <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', lineHeight: '1.6', maxWidth: '260px' }}>
+            Transformando o mercado de arquitetura comercial no Brasil. Projetos que vendem.
+          </p>
+          <div className="footer-socials">
+            <a href="https://www.instagram.com/arq.painap/" target="_blank" rel="noopener noreferrer" className="social-link" title="Instagram PAINAP">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="https://www.linkedin.com/company/painap" target="_blank" rel="noopener noreferrer" className="social-link" title="LinkedIn PAINAP">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
+            <a href="https://www.youtube.com/@painap" target="_blank" rel="noopener noreferrer" className="social-link" title="YouTube PAINAP">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-1.96C18.88 4 12 4 12 4s-6.88 0-8.6.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.94 1.96C5.12 20 12 20 12 20s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>
+            </a>
+            <a href="https://wa.me/5511999999999" target="_blank" rel="noopener noreferrer" className="social-link" title="WhatsApp PAINAP">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+            </a>
+          </div>
         </div>
         <div className="footer-col">
           <h4>Conteúdo</h4>
           <ul>
-            <li>Psicologia do Espaço</li>
-            <li>Iluminação para Varejo</li>
-            <li>Gestão de Projetos</li>
-            <li>Precificação High-Ticket</li>
+            <li>Arquitetura que Vende</li>
+            <li>Estética que Fatura</li>
+            <li>A Loja como Experiência</li>
+            <li>O Luxo do Varejo</li>
+            <li>Arquitetura de Posicionamento</li>
+          </ul>
+        </div>
+        <div className="footer-col">
+          <h4>Plataforma</h4>
+          <ul>
+            <li onClick={() => navigate('/login')} style={{ cursor: 'pointer' }}>Área do Aluno</li>
+            <li>Toolbox VIP</li>
+            <li>Comunidade</li>
+            <li>Mentoria 1-on-1</li>
           </ul>
         </div>
         <div className="footer-col">
@@ -168,6 +196,9 @@ export default function Landing() {
             <li>Privacidade</li>
             <li>Suporte ao Aluno</li>
           </ul>
+        </div>
+        <div className="footer-bottom">
+          <p>© {new Date().getFullYear()} Universidade PAINAP · Todos os direitos reservados · PAINAP Arquitetura Ltda.</p>
         </div>
       </footer>
     </div>

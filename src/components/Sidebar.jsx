@@ -1,5 +1,5 @@
 import React from 'react';
-import { Home, PlayCircle, FolderOpen, Users, LogOut } from 'lucide-react';
+import { Home, PlayCircle, Briefcase, Layers, Users, LogOut } from 'lucide-react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import './Sidebar.css';
 
@@ -10,8 +10,8 @@ export default function Sidebar() {
   const menuItems = [
     { path: '/aluno/dashboard', icon: Home, label: 'Visão Geral' },
     { path: '/aluno/curso', icon: PlayCircle, label: 'Cursos' },
-    { path: '/aluno/cases', icon: FolderOpen, label: 'Cases & Templates' },
-    { path: '/aluno/toolbox', icon: FolderOpen, label: 'Toolbox PAINAP' },
+    { path: '/aluno/cases', icon: Briefcase, label: 'Cases & Templates' },
+    { path: '/aluno/toolbox', icon: Layers, label: 'Toolbox PAINAP' },
     { path: '/aluno/community', icon: Users, label: 'Networking' }
   ];
 

@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { ShieldCheck, Lock, HeadphonesIcon, ChevronLeft } from 'lucide-react';
 
 const TABS = [
@@ -10,7 +10,15 @@ const TABS = [
 
 export default function Policies() {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
   const [active, setActive] = useState('termos');
+
+  useEffect(() => {
+    const tab = searchParams.get('tab');
+    if (tab && TABS.some(t => t.id === tab)) {
+      setActive(tab);
+    }
+  }, [searchParams]);
 
   return (
     <div style={{ minHeight: '100vh', background: 'var(--bg-primary)', color: 'var(--text-primary)', fontFamily: 'Arsenal, sans-serif' }}>

@@ -3,6 +3,25 @@ import { PlayCircle, Clock, Award, ArrowRight, Lock, CheckCircle, Circle } from 
 import { useNavigate } from 'react-router-dom';
 import './Dashboard.css';
 
+const getModuleThumbnail = (moduleName) => {
+  if (!moduleName) return '/img/thumb_course_psicologia_1779051643188.png';
+  
+  const normalized = moduleName.toLowerCase();
+  if (normalized.includes('fundamentos') || normalized.includes('módulo 1') || normalized.includes('modulo 1')) {
+    return '/img/curso_novo_1.png';
+  }
+  if (normalized.includes('iluminação') || normalized.includes('iluminacao') || normalized.includes('módulo 2') || normalized.includes('modulo 2')) {
+    return '/img/curso_novo_2.png';
+  }
+  if (normalized.includes('cores') || normalized.includes('psicologia') || normalized.includes('módulo 3') || normalized.includes('modulo 3')) {
+    return '/img/curso_novo_3.png';
+  }
+  if (normalized.includes('experiência') || normalized.includes('experiencia') || normalized.includes('módulo 4') || normalized.includes('modulo 4')) {
+    return '/img/curso_novo_4.png';
+  }
+  return '/img/curso_novo_5.png';
+};
+
 export default function Dashboard() {
   const navigate = useNavigate();
 
@@ -45,8 +64,13 @@ export default function Dashboard() {
   const level = getLevel();
   const completionPercent = totalLessons > 0 ? Math.round((completedLessons / totalLessons) * 100) : 0;
 
-  // Find the first incomplete lesson to continue watching
-  const nextLesson = lessonsData.find(l => !l.completed) || lessonsData[0];
+  // Find the last watched lesson, or the first incomplete one, or default to first
+  const activeLessonId = localStorage.getItem('painap_active_lesson_id');
+  const lastWatchedLesson = activeLessonId 
+    ? lessonsData.find(l => l.id === parseInt(activeLessonId))
+    : null;
+
+  const nextLesson = lastWatchedLesson || lessonsData.find(l => !l.completed) || lessonsData[0];
 
   return (
     <div className="dashboard fade-in">
@@ -81,7 +105,7 @@ export default function Dashboard() {
       </header>
 
       <section className="continue-watching glass-panel">
-        <div className="cw-image" style={{ backgroundImage: 'url(/img/thumb_course_psicologia_1779051643188.png)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
+        <div className="cw-image" style={{ backgroundImage: `url(${getModuleThumbnail(nextLesson?.module)})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
           <div className="image-overlay" onClick={() => navigate('/aluno/curso')} style={{ cursor: 'pointer' }}>
             <PlayCircle size={48} className="play-icon-large" />
           </div>

@@ -41,6 +41,25 @@ const DEFAULT_LESSONS = [
   }
 ];
 
+const getModuleThumbnail = (moduleName) => {
+  if (!moduleName) return '/img/thumb_course_psicologia_1779051643188.png';
+  
+  const normalized = moduleName.toLowerCase();
+  if (normalized.includes('fundamentos') || normalized.includes('módulo 1') || normalized.includes('modulo 1')) {
+    return '/img/curso_novo_1.png';
+  }
+  if (normalized.includes('iluminação') || normalized.includes('iluminacao') || normalized.includes('módulo 2') || normalized.includes('modulo 2')) {
+    return '/img/curso_novo_2.png';
+  }
+  if (normalized.includes('cores') || normalized.includes('psicologia') || normalized.includes('módulo 3') || normalized.includes('modulo 3')) {
+    return '/img/curso_novo_3.png';
+  }
+  if (normalized.includes('experiência') || normalized.includes('experiencia') || normalized.includes('módulo 4') || normalized.includes('modulo 4')) {
+    return '/img/curso_novo_4.png';
+  }
+  return '/img/curso_novo_5.png';
+};
+
 export default function CoursePlayer() {
   const [lessons, setLessons] = useState(() => {
     const saved = localStorage.getItem('painap_lessons');
@@ -88,8 +107,23 @@ export default function CoursePlayer() {
   const courseData = Object.values(modulesMap);
 
   const [isPlaying, setIsPlaying] = useState(false);
-  const [activeModule, setActiveModule] = useState(() => courseData[0]?.id || 1);
-  const [activeLesson, setActiveLesson] = useState(() => courseData[0]?.lessons[0]?.id || null);
+  const [activeLesson, setActiveLesson] = useState(() => {
+    const savedActive = localStorage.getItem('painap_active_lesson_id');
+    if (savedActive) return parseInt(savedActive);
+    return courseData[0]?.lessons[0]?.id || null;
+  });
+
+  const [activeModule, setActiveModule] = useState(() => {
+    if (activeLesson) {
+      for (const mod of courseData) {
+        if (mod.lessons.some(l => l.id === activeLesson)) {
+          return mod.id;
+        }
+      }
+    }
+    return courseData[0]?.id || 1;
+  });
+
   const [isFocusMode, setIsFocusMode] = useState(false);
   const [isFavorited, setIsFavorited] = useState(false);
 
@@ -116,7 +150,7 @@ export default function CoursePlayer() {
             <div 
               className="custom-video-cover" 
               onClick={() => setIsPlaying(true)}
-              style={{ backgroundImage: 'linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.85)), url(/img/thumb_course_psicologia_1779051643188.png)' }}
+              style={{ backgroundImage: `linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.85)), url(${getModuleThumbnail(currentLesson?.module)})` }}
             >
               <div className="cover-content">
                 <div className="play-button-glass">
@@ -263,6 +297,7 @@ export default function CoursePlayer() {
                       onClick={() => {
                         if (!lesson.locked) {
                           setActiveLesson(lesson.id);
+                          localStorage.setItem('painap_active_lesson_id', lesson.id);
                           setIsPlaying(false);
                         }
                       }}

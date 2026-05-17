@@ -68,7 +68,7 @@ export default function Dashboard() {
             <div style={{ position: 'absolute', top: '1rem', right: '1rem', background: 'var(--bg-primary)', padding: '0.5rem', borderRadius: '50%', zIndex: 10 }}>
               <Lock size={18} color="var(--accent)" />
             </div>
-            <div className="card-image-placeholder" style={{ backgroundImage: 'url(/img/socia_1.jpg)', backgroundSize: 'cover', backgroundPosition: 'center' }}></div>
+            <div className="card-image-placeholder" style={{ backgroundImage: 'url(/img/thumb_1.png)', backgroundSize: 'cover', backgroundPosition: 'center' }}></div>
             <div className="card-content">
               <span className="card-category">Mentoria Premium</span>
               <h4>Sessão 1-on-1 com Especialista</h4>
@@ -78,7 +78,7 @@ export default function Dashboard() {
           </div>
           
           <div className="case-card glass-panel" onClick={() => navigate('/aluno/curso')} style={{ cursor: 'pointer' }}>
-            <div className="card-image-placeholder" style={{ backgroundImage: 'url(/img/socia_2.jpg)', backgroundSize: 'cover', backgroundPosition: 'center' }}></div>
+            <div className="card-image-placeholder" style={{ backgroundImage: 'url(/img/thumb_2.png)', backgroundSize: 'cover', backgroundPosition: 'center' }}></div>
             <div className="card-content">
               <span className="card-category">Módulo 1</span>
               <h4>A Psicologia do Espaço</h4>
@@ -90,7 +90,7 @@ export default function Dashboard() {
           </div>
 
           <div className="case-card glass-panel" onClick={() => navigate('/aluno/cases')} style={{ cursor: 'pointer' }}>
-            <div className="card-image-placeholder" style={{ backgroundImage: 'url(/img/socia_3.jpg)', backgroundSize: 'cover', backgroundPosition: 'center' }}></div>
+            <div className="card-image-placeholder" style={{ backgroundImage: 'url(/img/thumb_3.png)', backgroundSize: 'cover', backgroundPosition: 'center' }}></div>
             <div className="card-content">
               <span className="card-category">Estudo de Caso</span>
               <h4>Fast Food do Futuro</h4>

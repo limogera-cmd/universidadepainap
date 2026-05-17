@@ -25,7 +25,7 @@ export default function Policies() {
       
       {/* Navbar simples */}
       <nav style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '1.5rem 5%', borderBottom: '1px solid var(--border-color)' }}>
-        <div style={{ fontFamily: 'Mosvita, serif', fontSize: '1.6rem' }}>PAINAP<span style={{ color: 'var(--accent)' }}>.</span></div>
+        <img src="/img/logo site (3).png" alt="PAINAP Logo" style={{ height: '24px', width: 'auto', objectFit: 'contain' }} />
         <button onClick={() => navigate('/')} style={{ background: 'transparent', border: 'none', color: 'var(--text-secondary)', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
           <ChevronLeft size={18} /> Voltar ao Site
         </button>

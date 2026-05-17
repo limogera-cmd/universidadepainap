@@ -17,9 +17,9 @@ export default function AdminLayout() {
   return (
     <div className="admin-container">
       <aside className="admin-sidebar">
-        <div className="admin-brand">
-          <h2 style={{fontSize: '1.2rem'}}>UNIVERSIDADE</h2>
-          <span className="admin-subtitle">PAINAP ADMIN</span>
+        <div className="admin-brand" style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '0.4rem', padding: '1rem 0' }}>
+          <img src="/img/logo site (3).png" alt="PAINAP Logo" style={{ height: '20px', width: 'auto', objectFit: 'contain' }} />
+          <span className="admin-subtitle" style={{ fontSize: '0.6rem', letterSpacing: '2px', textTransform: 'uppercase', fontWeight: 700, color: 'var(--accent)', marginLeft: '1px' }}>ADMINISTRADOR</span>
         </div>
         
         <nav className="admin-nav">

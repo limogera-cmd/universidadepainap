@@ -43,7 +43,7 @@ export default function Landing() {
 
       {/* Navbar */}
       <nav className="landing-navbar">
-        <div className="logo">PAINAP<span>.</span></div>
+        <img src="/img/logo site (3).png" alt="PAINAP Logo" className="brand-logo-img" style={{ height: '32px', width: 'auto', objectFit: 'contain' }} />
         <button className="btn-secondary" onClick={() => navigate('/login')} style={{ padding: '0.5rem 1.5rem' }}>
           Acesso Alunos
         </button>
@@ -149,9 +149,7 @@ export default function Landing() {
       {/* Footer */}
       <footer className="landing-footer">
         <div className="footer-col footer-brand">
-          <div style={{ fontFamily: 'Mosvita, serif', fontSize: '2rem', marginBottom: '0.75rem' }}>
-            PAINAP<span style={{ color: 'var(--accent)' }}>.</span>
-          </div>
+          <img src="/img/logo site (3).png" alt="PAINAP Logo" style={{ height: '36px', width: 'auto', objectFit: 'contain', marginBottom: '1rem' }} />
           <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', lineHeight: '1.6', maxWidth: '260px' }}>
             Transformando o mercado de arquitetura comercial no Brasil. Projetos que vendem.
           </p>

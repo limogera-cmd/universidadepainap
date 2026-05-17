@@ -23,9 +23,9 @@ export default function Login() {
       {/* Formulário de Login */}
       <div className="login-form-side">
         <div className="login-box glass-panel fade-in">
-          <div className="login-header" style={{ textAlign: 'center' }}>
-            <h2>UNIVERSIDADE</h2>
-            <span className="subtitle">PAINAP</span>
+          <div className="login-header" style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.6rem', marginBottom: '1.5rem' }}>
+            <img src="/img/logo site (3).png" alt="PAINAP Logo" style={{ height: '36px', width: 'auto', objectFit: 'contain' }} />
+            <span className="subtitle" style={{ fontSize: '0.7rem', letterSpacing: '4px', textTransform: 'uppercase', color: 'var(--accent)', fontWeight: 700, margin: 0 }}>UNIVERSIDADE</span>
           </div>
           
           <p className="login-desc">O acesso à elite da Arquitetura de Consumo requer identificação.</p>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { PlayCircle, CheckCircle, Circle, Lock, Maximize } from 'lucide-react';
+import { PlayCircle, CheckCircle, Circle, Lock, Maximize, ArrowRight } from 'lucide-react';
 import './CoursePlayer.css';
 
 export default function CoursePlayer() {
@@ -88,6 +88,21 @@ export default function CoursePlayer() {
               <button className="btn-secondary">Download PDF da Aula</button>
             </div>
           </div>
+
+          {/* Upsell Module */}
+          <div className="upsell-module glass-panel fade-in" style={{ marginTop: '2rem', border: '1px solid var(--accent)', background: 'linear-gradient(145deg, rgba(18,18,18,0.9), rgba(30,25,10,0.8))', padding: '2rem' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
+              <div>
+                <span style={{ color: 'var(--accent)', fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '1px', fontWeight: 'bold' }}>RECOMENDAÇÃO VIP</span>
+                <h3 style={{ marginTop: '0.5rem', marginBottom: '0.5rem', fontSize: '1.5rem' }}>Mentoria 1-on-1 com as Sócias</h3>
+                <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', maxWidth: '500px' }}>Traga o projeto do seu cliente para uma revisão completa de layout, iluminação e jornada de compra. Exclusivo para alunos Ouro.</p>
+              </div>
+              <button className="btn-primary" style={{ padding: '1rem 2rem' }}>
+                Destravar Oferta <ArrowRight size={18} />
+              </button>
+            </div>
+          </div>
+
         </div>
       </div>
 

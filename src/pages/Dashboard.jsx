@@ -8,24 +8,31 @@ export default function Dashboard() {
 
   return (
     <div className="dashboard fade-in">
-      <header className="dashboard-header">
-        <div>
-          <h1>Universidade PAINAP</h1>
-          <p>O seu espaço de evolução em Arquitetura de Consumo.</p>
-        </div>
-        <div className="stats-container">
-          <div className="stat-card glass-panel">
-            <Clock size={24} className="stat-icon" />
-            <div className="stat-info">
-              <span className="stat-value">12h 45m</span>
-              <span className="stat-label">Tempo de Estudo</span>
-            </div>
+      <header className="hero-banner fade-in">
+        <div className="hero-overlay"></div>
+        <div className="hero-content">
+          <div className="hero-text">
+            <span className="hero-tag">BEM-VINDO AO CLUBE</span>
+            <h1>Universidade PAINAP</h1>
+            <p>O seu espaço de evolução em Arquitetura de Consumo e Alta Renda.</p>
+            <button className="btn-primary" style={{ marginTop: '1rem' }} onClick={() => navigate('/aluno/curso')}>
+              <PlayCircle size={18} /> Continuar Jornada
+            </button>
           </div>
-          <div className="stat-card glass-panel" style={{ border: '1px solid var(--accent)' }}>
-            <Award size={24} className="stat-icon" />
-            <div className="stat-info">
-              <span className="stat-value" style={{ color: 'var(--accent)' }}>Ouro</span>
-              <span className="stat-label">Nível Atual</span>
+          <div className="stats-container">
+            <div className="stat-card glass-panel">
+              <Clock size={24} className="stat-icon" />
+              <div className="stat-info">
+                <span className="stat-value">12h 45m</span>
+                <span className="stat-label">Tempo de Estudo</span>
+              </div>
+            </div>
+            <div className="stat-card glass-panel" style={{ border: '1px solid var(--accent)' }}>
+              <Award size={24} className="stat-icon" />
+              <div className="stat-info">
+                <span className="stat-value" style={{ color: 'var(--accent)' }}>Ouro</span>
+                <span className="stat-label">Nível Atual</span>
+              </div>
             </div>
           </div>
         </div>

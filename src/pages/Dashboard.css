@@ -36,6 +36,8 @@
   justify-content: space-between;
   align-items: flex-end;
   width: 100%;
+  gap: 2.5rem;
+  flex-wrap: wrap; /* Garante que os cards quebrem para baixo em telas médias antes de espremer o botão */
 }
 
 .hero-text {
@@ -66,7 +68,9 @@
 
 .stats-container {
   display: flex;
-  gap: 1rem;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
 }
 
 .stat-card {
@@ -343,5 +347,22 @@
     height: 150px;
     border-right: none;
     border-bottom: 1px solid var(--border-color);
+  }
+}
+
+@media (max-width: 1024px) {
+  .hero-banner {
+    min-height: auto;
+    padding: 2.5rem 2rem;
+  }
+  .hero-content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2rem;
+  }
+  .stats-container {
+    width: 100%;
+    justify-content: flex-start;
+    margin-top: 0.5rem;
   }
 }

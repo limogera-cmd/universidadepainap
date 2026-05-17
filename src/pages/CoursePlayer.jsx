@@ -2,31 +2,111 @@ import React, { useState } from 'react';
 import { Play, CheckCircle, Circle, Lock, Maximize, ArrowRight, Star, Award } from 'lucide-react';
 import './CoursePlayer.css';
 
+const DEFAULT_LESSONS = [
+  { 
+    id: 1, 
+    title: 'O que é Arquitetura de Consumo?', 
+    module: 'Módulo 1: Fundamentos', 
+    duration: '12:05', 
+    videoUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', 
+    status: 'Publicado',
+    description: 'Nesta aula de introdução, exploramos as origens e a evolução do design comercial estratégico no Brasil e no mundo.'
+  },
+  { 
+    id: 2, 
+    title: 'A Psicologia do Espaço', 
+    module: 'Módulo 1: Fundamentos', 
+    duration: '18:30', 
+    videoUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', 
+    status: 'Publicado',
+    description: 'Aprenda como a disposição dos móveis, fluxos internos e o pé-direito afetam o tempo de permanência no estabelecimento.'
+  },
+  { 
+    id: 3, 
+    title: 'Luz Quente vs Luz Fria', 
+    module: 'Módulo 2: Iluminação Estratégica', 
+    duration: '15:20', 
+    videoUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', 
+    status: 'Publicado',
+    description: 'Entenda a temperatura de cor e como criar atmosferas aconchegantes ou áreas de alta produtividade e vendas.'
+  },
+  { 
+    id: 4, 
+    title: 'Direcionamento de Fluxo', 
+    module: 'Módulo 2: Iluminação Estratégica', 
+    duration: '22:15', 
+    videoUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', 
+    status: 'Rascunho',
+    description: 'Checklists práticos de como usar spots de iluminação direcionada para guiar o cliente intuitivamente pelas prateleiras.'
+  }
+];
+
 export default function CoursePlayer() {
+  const [lessons, setLessons] = useState(() => {
+    const saved = localStorage.getItem('painap_lessons');
+    return saved ? JSON.parse(saved) : DEFAULT_LESSONS;
+  });
+
+  const getYoutubeId = (url) => {
+    if (!url) return '';
+    const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+    const match = url.match(regExp);
+    return (match && match[2].length === 11) ? match[2] : url;
+  };
+
+  const toggleComplete = (id) => {
+    setLessons(prev => {
+      const next = prev.map(l => l.id === id ? { ...l, completed: !l.completed } : l);
+      localStorage.setItem('painap_lessons', JSON.stringify(next));
+      return next;
+    });
+  };
+
+  // Group lessons by module
+  const modulesMap = {};
+  let moduleIdCounter = 1;
+  const publicLessons = lessons.filter(l => l.status === 'Publicado');
+
+  publicLessons.forEach(lesson => {
+    if (!modulesMap[lesson.module]) {
+      modulesMap[lesson.module] = {
+        id: moduleIdCounter++,
+        title: lesson.module,
+        lessons: []
+      };
+    }
+    modulesMap[lesson.module].lessons.push({
+      id: lesson.id,
+      title: lesson.title,
+      duration: lesson.duration,
+      videoUrl: lesson.videoUrl,
+      description: lesson.description,
+      completed: lesson.completed || false
+    });
+  });
+
+  const courseData = Object.values(modulesMap);
+
   const [isPlaying, setIsPlaying] = useState(false);
-  const [activeModule, setActiveModule] = useState(1);
-  const [activeLesson, setActiveLesson] = useState(2);
+  const [activeModule, setActiveModule] = useState(() => courseData[0]?.id || 1);
+  const [activeLesson, setActiveLesson] = useState(() => courseData[0]?.lessons[0]?.id || null);
   const [isFocusMode, setIsFocusMode] = useState(false);
   const [isFavorited, setIsFavorited] = useState(false);
 
-  const courseData = [
-    {
-      id: 1,
-      title: "Módulo 1: Fundamentos",
-      lessons: [
-        { id: 1, title: "O que é Arquitetura de Consumo?", duration: "12:05", completed: true },
-        { id: 2, title: "A Psicologia do Espaço", duration: "18:30", completed: false },
-      ]
-    },
-    {
-      id: 2,
-      title: "Módulo 2: Iluminação Estratégica",
-      lessons: [
-        { id: 3, title: "Luz Quente vs Luz Fria", duration: "15:20", completed: false },
-        { id: 4, title: "Direcionamento de Fluxo", duration: "22:15", locked: true },
-      ]
-    }
-  ];
+  // Find active lesson details
+  let currentLesson = null;
+  courseData.forEach(mod => {
+    const found = mod.lessons.find(l => l.id === activeLesson);
+    if (found) currentLesson = found;
+  });
+
+  if (!currentLesson && courseData[0]?.lessons[0]) {
+    currentLesson = courseData[0].lessons[0];
+  }
+
+  const totalLessonsCount = courseData.reduce((acc, mod) => acc + mod.lessons.length, 0);
+  const completedLessonsCount = courseData.reduce((acc, mod) => acc + mod.lessons.filter(l => l.completed).length, 0);
+  const progressPercent = totalLessonsCount > 0 ? Math.round((completedLessonsCount / totalLessonsCount) * 100) : 0;
 
   return (
     <div className={`course-player-container fade-in ${isFocusMode ? 'focus-mode-active' : ''}`}>
@@ -42,19 +122,25 @@ export default function CoursePlayer() {
                 <div className="play-button-glass">
                   <Play size={36} fill="currentColor" className="play-icon" style={{ marginLeft: '4px' }} />
                 </div>
-                <h3 style={{ fontFamily: 'Mosvita, serif', fontSize: '2rem', letterSpacing: '1px' }}>A Psicologia do Espaço</h3>
-                <p style={{ color: 'var(--accent)', letterSpacing: '2px', textTransform: 'uppercase', fontSize: '0.85rem', fontWeight: 600 }}>Módulo 1 • Aula 2</p>
+                <h3 style={{ fontFamily: 'Mosvita, serif', fontSize: '2rem', letterSpacing: '1px' }}>{currentLesson?.title || 'Selecione uma aula'}</h3>
+                <p style={{ color: 'var(--accent)', letterSpacing: '2px', textTransform: 'uppercase', fontSize: '0.85rem', fontWeight: 600 }}>{currentLesson?.module || 'Trilha Principal'}</p>
               </div>
             </div>
           ) : (
             <div className="iframe-container">
-              <iframe 
-                src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&rel=0&modestbranding=1" 
-                title="Course Video" 
-                frameBorder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                allowFullScreen
-              ></iframe>
+              {currentLesson?.videoUrl ? (
+                <iframe 
+                  src={`https://www.youtube.com/embed/${getYoutubeId(currentLesson.videoUrl)}?autoplay=1&rel=0&modestbranding=1`} 
+                  title="Course Video" 
+                  frameBorder="0" 
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                  allowFullScreen
+                ></iframe>
+              ) : (
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%', background: '#111', color: '#888' }}>
+                  <span>Nenhum vídeo configurado para esta aula.</span>
+                </div>
+              )}
             </div>
           )}
         </div>
@@ -63,14 +149,23 @@ export default function CoursePlayer() {
           <div className="lesson-header">
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%', flexWrap: 'wrap', gap: '1rem' }}>
               <div>
-                <h1 style={{ fontFamily: 'Mosvita, serif', fontSize: '2.2rem', margin: 0, fontWeight: 'normal' }}>A Psicologia do Espaço</h1>
+                <h1 style={{ fontFamily: 'Mosvita, serif', fontSize: '2.2rem', margin: 0, fontWeight: 'normal' }}>{currentLesson?.title || 'Selecione uma aula'}</h1>
                 <p className="lesson-meta" style={{ color: 'var(--accent)', fontSize: '0.85rem', letterSpacing: '1px', textTransform: 'uppercase', marginTop: '0.4rem' }}>
-                  Módulo 1 • 18 Minutos • Nível Intermediário
+                  {currentLesson?.module || 'Trilha Principal'} • {currentLesson?.duration || '10:00'} • Nível Elite
                 </p>
               </div>
               <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'center', flexWrap: 'wrap' }}>
-                <button className="btn-primary" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', padding: '0.75rem 1.25rem', borderRadius: '8px' }}>
-                  <CheckCircle size={18} /> Marcar como Concluída
+                <button 
+                  onClick={() => currentLesson && toggleComplete(currentLesson.id)}
+                  className="btn-primary" 
+                  style={{ 
+                    display: 'flex', alignItems: 'center', gap: '0.5rem', padding: '0.75rem 1.25rem', borderRadius: '8px',
+                    background: currentLesson?.completed ? 'transparent' : 'var(--text-primary)',
+                    border: currentLesson?.completed ? '1px solid var(--accent)' : 'none',
+                    color: currentLesson?.completed ? 'var(--accent)' : 'var(--bg-primary)'
+                  }}
+                >
+                  <CheckCircle size={18} /> {currentLesson?.completed ? 'Aula Concluída' : 'Marcar como Concluída'}
                 </button>
                 <button 
                   onClick={() => setIsFavorited(!isFavorited)}
@@ -93,9 +188,7 @@ export default function CoursePlayer() {
           <div className="lesson-description glass-panel">
             <h3>Sobre esta aula</h3>
             <p>
-              Nesta aula, exploraremos como a disposição dos móveis e o pé-direito afetam
-              a percepção do consumidor e o tempo de permanência no estabelecimento. 
-              Você aprenderá a criar zonas de transição suaves que guiam o cliente intuitivamente.
+              {currentLesson?.description || 'Nesta aula do método PAINAP, abordamos estratégias avançadas de posicionamento arquitetônico comercial para otimizar os lucros do cliente final.'}
             </p>
             <div className="materials">
               <h4>Materiais Complementares</h4>
@@ -128,9 +221,9 @@ export default function CoursePlayer() {
         <div className="sidebar-header">
           <h3>Trilha do Curso</h3>
           <div className="course-progress">
-            <span className="progress-text">1/4 Aulas</span>
+            <span className="progress-text">{completedLessonsCount}/{totalLessonsCount} Aulas</span>
             <div className="progress-bar">
-              <div className="progress-fill" style={{ width: '25%' }}></div>
+              <div className="progress-fill" style={{ width: `${progressPercent}%` }}></div>
             </div>
           </div>
         </div>
@@ -151,7 +244,12 @@ export default function CoursePlayer() {
                     <div 
                       key={lesson.id} 
                       className={`lesson-item ${activeLesson === lesson.id ? 'active' : ''} ${lesson.locked ? 'locked' : ''}`}
-                      onClick={() => !lesson.locked && setActiveLesson(lesson.id)}
+                      onClick={() => {
+                        if (!lesson.locked) {
+                          setActiveLesson(lesson.id);
+                          setIsPlaying(false);
+                        }
+                      }}
                     >
                       <div className="lesson-icon">
                         {lesson.locked ? <Lock size={16} /> : 
@@ -179,9 +277,9 @@ export default function CoursePlayer() {
         }}>
           <Award size={32} color="var(--accent)" style={{ margin: '0 auto 0.5rem auto' }} />
           <h4 style={{ fontSize: '1rem', marginBottom: '0.25rem' }}>Certificado Oficial PAINAP</h4>
-          <span style={{ fontSize: '0.75rem', color: 'var(--text-secondary)' }}>Status: 25% Concluído</span>
+          <span style={{ fontSize: '0.75rem', color: 'var(--text-secondary)' }}>Status: {progressPercent}% Concluído</span>
           <div className="progress-bar" style={{ marginTop: '0.5rem', height: '6px' }}>
-            <div className="progress-fill" style={{ width: '25%' }}></div>
+            <div className="progress-fill" style={{ width: `${progressPercent}%` }}></div>
           </div>
           <p style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', marginTop: '0.5rem' }}>Conclua todas as aulas para desbloquear seu selo Ouro corporativo.</p>
         </div>

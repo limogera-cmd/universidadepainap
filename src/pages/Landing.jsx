@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Lock, ArrowRight, ChevronDown, ChevronUp, AlertCircle, PlayCircle } from 'lucide-react';
+import { Lock, ArrowRight, ChevronDown, ChevronUp, AlertCircle } from 'lucide-react';
 import './Landing.css';
 
 export default function Landing() {
@@ -21,16 +21,16 @@ export default function Landing() {
 
   const faqs = [
     {
-      q: "A Universidade PAINAP é para quem está começando na arquitetura?",
-      a: "O conteúdo é focado em arquitetos que buscam elevar seu faturamento através de projetos comerciais estratégicos. Se você quer atuar com marcas e franquias, sim."
+      q: "O que é o conceito de 'Arquitetura de Consumo' ensinado na Escola?",
+      a: "É a metodologia que enxerga o espaço físico como um ativo gerador de lucro e escala de vendas, combinando neuroarquitetura, zoneamento de calor comercial, técnicas de visual merchandising e cálculo de viabilidade de reforma."
     },
     {
-      q: "Terei acesso aos arquivos da Toolbox?",
-      a: "Sim. A versão Ouro destrava todos os nossos blocos 3D, templates de contrato e planilhas de gestão que usamos com nossos clientes high-ticket."
+      q: "A Escola serve para arquitetos recém-formados?",
+      a: "Sim, se você quer pular a fase de fazer projetos residenciais de baixo valor e se posicionar imediatamente como um especialista estratégico altamente remunerado por marcas e redes de varejo."
     },
     {
-      q: "O acesso é vitalício?",
-      a: "O acesso padrão é anual para garantir que você sempre receba as metodologias mais atualizadas do mercado de varejo."
+      q: "O que está incluso na PAINAP Toolbox?",
+      a: "Tudo o que você precisa para operar profissionalmente: modelos de propostas comerciais high-ticket, blocos 3D técnicos de varejo, planilhas financeiras de ROI e checklists de implantação física em shopping e rua."
     }
   ];
 
@@ -38,12 +38,12 @@ export default function Landing() {
     <div className="landing-container fade-in">
       {/* Scarcity Banner */}
       <div className="scarcity-banner">
-        ⚠️ Atenção: As matrículas para a nova turma fecham em breve. Vagas Ouro limitadas.
+        ⚠️ Atenção: As matrículas para a nova turma da Elite PAINAP fecham em breve. Apenas 7 vagas restantes.
       </div>
 
       {/* Navbar */}
       <nav className="landing-navbar">
-        <img src="/img/logo site (3).png" alt="PAINAP Logo" className="brand-logo-img" style={{ height: '32px', width: 'auto', objectFit: 'contain' }} />
+        <img src="/img/LOGO SITE 4.png" alt="PAINAP Logo" className="brand-logo-img" style={{ height: '32px', width: 'auto', objectFit: 'contain' }} />
         <button className="btn-secondary" onClick={() => navigate('/login')} style={{ padding: '0.5rem 1.5rem' }}>
           Acesso Alunos
         </button>
@@ -52,10 +52,10 @@ export default function Landing() {
       {/* Hero Section */}
       <header className="landing-hero">
         <div className="hero-content">
-          <h1>Arquitetura que gera lucro.</h1>
-          <p>Domine o Método PAINAP e transforme projetos comerciais em verdadeiras máquinas de venda para seus clientes.</p>
+          <h1>Arquitetura de Consumo: Projetamos ambientes como ativos estratégicos.</h1>
+          <p>Não somos decoradores. Somos estrategistas. Domine a metodologia exata da PAINAP para criar projetos comerciais de alto impacto que atraem fluxo, maximizam o ROI do investidor e vendem de forma previsível.</p>
           <button className="btn-primary hero-cta" onClick={() => navigate('/login')}>
-            Garantir Minha Vaga <ArrowRight size={20} style={{ marginLeft: '10px' }} />
+            Entrar para a Elite da Arquitetura <ArrowRight size={20} style={{ marginLeft: '10px' }} />
           </button>
         </div>
       </header>
@@ -63,26 +63,26 @@ export default function Landing() {
       {/* Social Proof */}
       <section className="social-proof">
         <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
-          <h2 style={{ fontSize: '2.5rem', fontFamily: 'Mosvita, serif' }}>O que nossos alunos dizem</h2>
+          <h2 style={{ fontSize: '2.5rem', fontFamily: 'Mosvita, serif', textTransform: 'uppercase' }}>O Impacto do Método no Mercado</h2>
         </div>
         <div className="testimonial-grid">
           <div className="testimonial-card glass-panel">
-            <p>"Depois de aplicar a metodologia de fluxo de loja, consegui fechar meu primeiro projeto de rede de franquias. O valor cobrado pagou o curso 10x."</p>
+            <p>"Depois de dominar a metodologia de fluxo comercial e jornada de consumo da PAINAP, fechei meu primeiro projeto de rede com 12 lojas de cosméticos. O cliente percebeu que eu não estava vendendo decoração, mas sim um ativo gerador de lucro."</p>
             <div className="testimonial-author">
               <div className="author-avatar" style={{ backgroundImage: 'url(/img/socia_2.jpg)', backgroundSize: 'cover' }}></div>
               <div>
                 <strong>Mariana Silva</strong>
-                <div style={{ fontSize: '0.8rem', color: 'var(--text-secondary)' }}>Arquiteta Comercial</div>
+                <div style={{ fontSize: '0.8rem', color: 'var(--text-secondary)' }}>Arquiteta & Estrategista de Varejo</div>
               </div>
             </div>
           </div>
           <div className="testimonial-card glass-panel">
-            <p>"O módulo de Iluminação Estratégica mudou completamente como eu apresento meus renders. A aprovação agora é de primeira."</p>
+            <p>"A Escola PAINAP me deu o vocabulário e a técnica que os grandes varejistas exigem. Apresentar um projeto baseado em dados de atração visual e inteligência de vendas tornou a aprovação 3x mais rápida. Paguei o investimento na primeira mentoria."</p>
             <div className="testimonial-author">
               <div className="author-avatar" style={{ backgroundImage: 'url(/img/socia_3.jpg)', backgroundSize: 'cover' }}></div>
               <div>
                 <strong>Carlos Mendes</strong>
-                <div style={{ fontSize: '0.8rem', color: 'var(--text-secondary)' }}>Especialista em Varejo</div>
+                <div style={{ fontSize: '0.8rem', color: 'var(--text-secondary)' }}>Especialista em Franquias</div>
               </div>
             </div>
           </div>
@@ -91,29 +91,39 @@ export default function Landing() {
 
       {/* Blurred Toolbox Preview */}
       <section className="toolbox-preview">
-        <h2 style={{ fontSize: '2.5rem', fontFamily: 'Mosvita, serif' }}>Acesso Exclusivo à Toolbox</h2>
-        <p style={{ color: 'var(--text-secondary)', marginTop: '1rem' }}>Os exatos mesmos arquivos, blocos e contratos que usamos na PAINAP.</p>
+        <h2 style={{ fontSize: '2.5rem', fontFamily: 'Mosvita, serif', textTransform: 'uppercase' }}>PAINAP Toolbox: O Arsenal Estratégico</h2>
+        <p style={{ color: 'var(--text-secondary)', marginTop: '1rem', fontSize: '1.1rem' }}>Os exatos mesmos recursos táticos, templates de contrato, blocos de gôndolas e planilhas de ROI que usamos com nossos clientes high-ticket.</p>
         
         <div className="toolbox-grid-locked">
           <div className="lock-overlay">
             <Lock size={40} color="var(--accent)" />
             <h3>Acesso Restrito</h3>
-            <p>Destrave matriculando-se na versão Ouro</p>
-            <button className="btn-primary" onClick={() => navigate('/login')}>Ver Planos</button>
+            <p>O arsenal tático da PAINAP é exclusivo para alunos matriculados na trilha de elite.</p>
+            <button className="btn-primary" onClick={() => navigate('/login')}>Liberar Acesso</button>
           </div>
           
-          {[1, 2, 3, 4].map(i => (
-            <div key={i} className="case-card glass-panel" style={{ padding: '2rem', textAlign: 'left' }}>
-              <h4 style={{ color: 'var(--accent)' }}>Blocos 3D Premium</h4>
-              <p style={{ fontSize: '0.9rem', marginTop: '1rem' }}>Coleção completa de expositores paramétricos.</p>
-            </div>
-          ))}
+          <div className="case-card glass-panel" style={{ padding: '2rem', textAlign: 'left' }}>
+            <h4 style={{ color: 'var(--accent)', fontFamily: 'Mosvita, serif' }}>EXPOSITORES PARAMÉTRICOS</h4>
+            <p style={{ fontSize: '0.9rem', marginTop: '1rem' }}>Coleção de blocos 3D focados em aumentar o Sell-Out por metro quadrado.</p>
+          </div>
+          <div className="case-card glass-panel" style={{ padding: '2rem', textAlign: 'left' }}>
+            <h4 style={{ color: 'var(--accent)', fontFamily: 'Mosvita, serif' }}>TEMPLATES DE CONTRATOS VIP</h4>
+            <p style={{ fontSize: '0.9rem', marginTop: '1rem' }}>Modelos jurídicos blindados para contratação de grandes redes e shoppings.</p>
+          </div>
+          <div className="case-card glass-panel" style={{ padding: '2rem', textAlign: 'left' }}>
+            <h4 style={{ color: 'var(--accent)', fontFamily: 'Mosvita, serif' }}>CALCULADORA DE ROI</h4>
+            <p style={{ fontSize: '0.9rem', marginTop: '1rem' }}>Planilha matemática para provar ao investidor o retorno do investimento no ponto físico.</p>
+          </div>
+          <div className="case-card glass-panel" style={{ padding: '2rem', textAlign: 'left' }}>
+            <h4 style={{ color: 'var(--accent)', fontFamily: 'Mosvita, serif' }}>DIRETRIZES DE MARCA 3D</h4>
+            <p style={{ fontSize: '0.9rem', marginTop: '1rem' }}>Manuais táticos para traduzir a identidade visual corporativa em arquitetura.</p>
+          </div>
         </div>
       </section>
 
       {/* FAQ */}
       <section className="faq-section">
-        <h2 style={{ fontSize: '2.5rem', fontFamily: 'Mosvita, serif', textAlign: 'center', marginBottom: '3rem' }}>Perguntas Frequentes</h2>
+        <h2 style={{ fontSize: '2.5rem', fontFamily: 'Mosvita, serif', textAlign: 'center', marginBottom: '3rem', textTransform: 'uppercase' }}>Perguntas Frequentes</h2>
         <div className="faq-list">
           {faqs.map((faq, index) => (
             <div key={index} className="faq-item" onClick={() => setOpenFaq(openFaq === index ? null : index)}>
@@ -132,12 +142,12 @@ export default function Landing() {
         <div className="exit-intent-overlay" onClick={() => setShowExitIntent(false)}>
           <div className="exit-intent-modal fade-in" onClick={e => e.stopPropagation()}>
             <AlertCircle size={48} color="var(--accent)" style={{ margin: '0 auto 1rem auto' }} />
-            <h2 style={{ fontFamily: 'Mosvita, serif', fontSize: '2rem', marginBottom: '1rem' }}>Espere!</h2>
-            <p style={{ color: 'var(--text-secondary)', marginBottom: '2rem' }}>
-              Não saia sem garantir o seu bônus especial. Ganhe <strong>20% de desconto</strong> se finalizar sua matrícula agora.
+            <h2 style={{ fontFamily: 'Mosvita, serif', fontSize: '2rem', marginBottom: '1rem', textTransform: 'uppercase' }}>Não deixe o dinheiro do seu cliente escorrer.</h2>
+            <p style={{ color: 'var(--text-secondary)', marginBottom: '2rem', fontSize: '1.05rem', lineHeight: '1.6' }}>
+              Ao sair sem conhecer o Método PAINAP, você continua vendendo decoração simples e perdendo projetos high-ticket. Garanta <strong>20% de desconto</strong> se der o primeiro passo rumo à elite agora.
             </p>
             <button className="btn-primary" style={{ width: '100%', marginBottom: '1rem', padding: '1rem' }} onClick={() => navigate('/login')}>
-              Quero meu desconto
+              Destravar Meu Desconto Especial
             </button>
             <button className="btn-secondary" style={{ width: '100%', border: 'none' }} onClick={() => setShowExitIntent(false)}>
               Vou pensar melhor
@@ -149,9 +159,9 @@ export default function Landing() {
       {/* Footer */}
       <footer className="landing-footer">
         <div className="footer-col footer-brand">
-          <img src="/img/logo site (3).png" alt="PAINAP Logo" style={{ height: '36px', width: 'auto', objectFit: 'contain', marginBottom: '1rem' }} />
+          <img src="/img/LOGO SITE 4.png" alt="PAINAP Logo" style={{ height: '36px', width: 'auto', objectFit: 'contain', marginBottom: '1rem' }} />
           <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', lineHeight: '1.6', maxWidth: '260px' }}>
-            Transformando o mercado de arquitetura comercial no Brasil. Projetos que vendem.
+            Transformando o mercado de arquitetura comercial no Brasil. Projetamos para que cada ambiente seja um ponto de partida, nunca um ponto final.
           </p>
           <div className="footer-socials">
             <a href="https://www.instagram.com/arq.painap/" target="_blank" rel="noopener noreferrer" className="social-link" title="Instagram PAINAP">
@@ -196,7 +206,7 @@ export default function Landing() {
           </ul>
         </div>
         <div className="footer-bottom">
-          <p>© {new Date().getFullYear()} Universidade PAINAP · Todos os direitos reservados · PAINAP Arquitetura Ltda.</p>
+          <p>© {new Date().getFullYear()} Escola PAINAP · Todos os direitos reservados · PAINAP Arquitetura Ltda.</p>
         </div>
       </footer>
     </div>

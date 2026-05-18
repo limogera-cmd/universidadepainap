@@ -25,29 +25,31 @@
 
 /* Variables - Design System PAINAP */
 :root {
-  --bg-primary: #0a0a0a;
-  --bg-secondary: #121212;
-  --bg-tertiary: #1a1a1a;
-  --accent: #d4af37; /* Premium Gold */
-  --accent-hover: #f3e5ab;
-  --text-primary: #ffffff;
-  --text-secondary: #a0a0a0;
-  --border-color: rgba(255, 255, 255, 0.1);
-  --glass-bg: rgba(18, 18, 18, 0.7);
-  --glass-border: rgba(255, 255, 255, 0.08);
+  /* Tema Padrão - Creme Quente e Elegante (Conforme Manual) */
+  --bg-primary: #FCF1E3;      /* Creme Quente Principal */
+  --bg-secondary: #EDE3C2;    /* Bege Palha Claro */
+  --bg-tertiary: #CCBCA1;     /* Bege Ouro Suave */
+  --accent: #E1461C;          /* Coral Enérgico */
+  --accent-hover: #B95517;    /* Terracota Ocre */
+  --text-primary: #4D4237;    /* Chocolate Escuro Oficial */
+  --text-secondary: #92806D;  /* Taupe Escuro Principal */
+  --border-color: rgba(77, 66, 55, 0.15);
+  --glass-bg: rgba(252, 241, 227, 0.9);
+  --glass-border: rgba(77, 66, 55, 0.1);
 }
 
-.light-theme {
-  --bg-primary: #f5f5f5;
-  --bg-secondary: #ffffff;
-  --bg-tertiary: #e0e0e0;
-  --accent: #b38b22; /* Darker Gold for light theme */
-  --accent-hover: #d4af37;
-  --text-primary: #121212;
-  --text-secondary: #555555;
-  --border-color: rgba(0, 0, 0, 0.1);
-  --glass-bg: rgba(255, 255, 255, 0.8);
-  --glass-border: rgba(0, 0, 0, 0.05);
+.dark-theme {
+  /* Dark Mode Premium baseado nos tons terrosos escuros do manual */
+  --bg-primary: #4D4237;      /* Chocolate Escuro */
+  --bg-secondary: #4B2A14;    /* Chocolate Quente Intenso */
+  --bg-tertiary: #92806D;     /* Taupe Escuro */
+  --accent: #F9B044;          /* Laranja Abóbora Quente */
+  --accent-hover: #FED381;    /* Dourado Damasco */
+  --text-primary: #FCF1E3;    /* Creme Quente */
+  --text-secondary: #CCBCA1;  /* Bege Ouro Suave */
+  --border-color: rgba(252, 241, 227, 0.15);
+  --glass-bg: rgba(77, 66, 55, 0.9);
+  --glass-border: rgba(252, 241, 227, 0.08);
 }
 
 * {
@@ -93,7 +95,7 @@ body {
 }
 ::-webkit-scrollbar-thumb {
   background: var(--bg-tertiary);
-  border-radius: 4px;
+  border-radius: 2px;
 }
 ::-webkit-scrollbar-thumb:hover {
   background: var(--border-color);
@@ -102,10 +104,9 @@ body {
 /* Glassmorphism utils */
 .glass-panel {
   background: var(--glass-bg);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--glass-border);
-  border-radius: 16px;
+  border-radius: 2px;
+  box-shadow: 0 4px 10px rgba(77, 66, 55, 0.05);
 }
 
 /* Typography */
@@ -123,10 +124,10 @@ p { line-height: 1.6; color: var(--text-secondary); }
 /* Buttons */
 .btn-primary {
   background-color: var(--accent);
-  color: #000;
+  color: var(--bg-primary);
   border: none;
   padding: 0.8rem 1.5rem;
-  border-radius: 8px;
+  border-radius: 2px;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -139,7 +140,7 @@ p { line-height: 1.6; color: var(--text-secondary); }
 .btn-primary:hover {
   background-color: var(--accent-hover);
   transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+  box-shadow: 0 4px 15px rgba(225, 70, 28, 0.3);
 }
 
 .btn-secondary {
@@ -147,7 +148,7 @@ p { line-height: 1.6; color: var(--text-secondary); }
   color: var(--text-primary);
   border: 1px solid var(--border-color);
   padding: 0.8rem 1.5rem;
-  border-radius: 8px;
+  border-radius: 2px;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;

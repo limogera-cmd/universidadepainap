@@ -18,8 +18,8 @@ export default function Sidebar() {
   return (
     <aside className="sidebar">
       <div className="brand" style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '0.4rem', padding: '1rem 0' }}>
-        <img src="/img/logo site (3).png" alt="PAINAP Logo" style={{ height: '24px', width: 'auto', objectFit: 'contain' }} />
         <span style={{ fontSize: '0.6rem', color: 'var(--accent)', letterSpacing: '3px', textTransform: 'uppercase', fontWeight: 700, marginLeft: '2px' }}>UNIVERSIDADE</span>
+        <img src="/img/LOGO SITE 4.png" alt="PAINAP Logo" style={{ height: '24px', width: 'auto', objectFit: 'contain' }} />
       </div>
       
       <nav className="nav-menu">

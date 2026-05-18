@@ -68,15 +68,22 @@
 }
 
 .hero-content h1 {
-  font-family: 'Mosvita', 'LuxuryRigane', serif;
-  font-size: 3.8rem;
+  font-family: 'LuxuryRigane', serif;
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
   line-height: 1.15;
   margin-bottom: 2rem;
   color: #FCF1E3; /* Forced Cream on dark banner image compatibility */
   text-shadow: 2px 2px 20px rgba(0,0,0,0.6);
-  text-transform: uppercase;
-  font-weight: 800;
-  letter-spacing: -1px;
+  text-transform: none;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.hero-content h1 em {
+  font-style: italic;
+  font-family: 'LuxuryRigane', serif;
+  font-weight: 600;
+  color: #FED381; /* Brand Dourado Damasco for elegant high-end contrast */
 }
 
 .hero-content p {

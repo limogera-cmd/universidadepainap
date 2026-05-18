@@ -4,7 +4,9 @@
 @font-face { font-family:'Arsenal'; src:url('/fonts/Arsenal-Italic.ttf') format('truetype'); font-weight:400; font-style:italic; font-display:swap; }
 @font-face { font-family:'Arsenal'; src:url('/fonts/Arsenal-Bold.ttf') format('truetype'); font-weight:700; font-style:normal; font-display:swap; }
 
+@font-face { font-family:'LuxuryRigane'; src:url('/fonts/LuxuryRigane-Light.ttf') format('truetype'); font-weight:300; font-display:swap; }
 @font-face { font-family:'LuxuryRigane'; src:url('/fonts/LuxuryRigane-Regular.ttf') format('truetype'); font-weight:400; font-display:swap; }
+@font-face { font-family:'LuxuryRigane'; src:url('/fonts/LuxuryRigane-Semibold.ttf') format('truetype'); font-weight:600; font-display:swap; }
 @font-face { font-family:'LuxuryRigane'; src:url('/fonts/LuxuryRigane-Bold.ttf') format('truetype'); font-weight:700; font-display:swap; }
 
 @font-face {

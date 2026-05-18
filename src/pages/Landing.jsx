@@ -52,7 +52,7 @@ export default function Landing() {
       {/* Hero Section */}
       <header className="landing-hero">
         <div className="hero-content">
-          <h1>Arquitetura de Consumo: Projetamos ambientes como ativos estratégicos.</h1>
+          <h1>Arquitetura de Consumo:<br />Projetamos ambientes como<br /><em>ativos estratégicos.</em></h1>
           <p>Não somos decoradores. Somos estrategistas. Domine a metodologia exata da PAINAP para criar projetos comerciais de alto impacto que atraem fluxo, maximizam o ROI do investidor e vendem de forma previsível.</p>
           <button className="btn-primary hero-cta" onClick={() => navigate('/login')}>
             Entrar para a Elite da Arquitetura <ArrowRight size={20} style={{ marginLeft: '10px' }} />
